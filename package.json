@@ -1,0 +1,10 @@
+{
+  "name": "api_monitoring",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd apiGateway && npm run dev\" \"cd authService && npm run dev\" \"cd MonitorService && npm run dev\" \"cd NotificationService && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
