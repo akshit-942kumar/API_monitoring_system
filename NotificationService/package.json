@@ -20,6 +20,7 @@
     "resend": "^6.16.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "start": "node server.js"
   }
 }
