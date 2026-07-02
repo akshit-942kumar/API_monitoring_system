@@ -93,6 +93,9 @@ export const deleteMonitor = async (req, res) => {
         message: "Monitor not found"
       });
     }
+      await Log.deleteMany({
+      monitorId: monitor._id,
+    });
 
     res.status(200).json({
       message: "Monitor deleted successfully"

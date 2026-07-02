@@ -7,6 +7,7 @@ const logSchema = new mongoose.Schema(
       ref: "Monitor",
       required: true,
     },
+    monitorname:String,
 
    status: {
   type: String,
