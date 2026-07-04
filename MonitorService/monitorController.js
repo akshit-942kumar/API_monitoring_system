@@ -80,6 +80,29 @@ export const updateLastEmailSent=async(req,res)=>{
   }
 };
 
+export const deleteAllMonitors=async(req,res)=>{
+  try {
+    const monitors=await Monitor.find({
+      userId:req.user.id
+    })
+    const monitorIds=monitors.map(m=>m._id);
+    await Log.deleteMany({
+      monitorId:{$in:monitorIds}
+    })
+    await Monitor.deleteMany({
+      userId:req.user.id
+    })
+   return res.status(200).json({
+  message: "All monitors deleted successfully",
+});
+    
+  } catch (error) {
+    return res.status(500).json({
+      message:error.message
+    })
+    
+  }
+}
 export const deleteMonitor = async (req, res) => {
   try {
 

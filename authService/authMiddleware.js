@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 // import crypto from "crypto";
 
 // console.log(crypto.randomBytes(64).toString("hex"));
@@ -24,7 +24,7 @@ const authMiddleware = (req, res, next) => {
    
     
     req.user = decoded;
-
+// console.log("decoded:",decoded)
     next();
   } catch (error) {
     return res.status(401).json({

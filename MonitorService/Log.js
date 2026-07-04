@@ -12,8 +12,8 @@ const logSchema = new mongoose.Schema(
    status: {
   type: String,
   enum: ["UP", "UNHEALTHY", "DOWN", "UNKNOWN"],
-}
-    ,
+},
+
     statusCode: {
   type: Number,
   default: null,

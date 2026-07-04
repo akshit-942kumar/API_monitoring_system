@@ -5,7 +5,7 @@ import {
   login,
   profile,
   googleLogin,
-  verifyOtp
+  verifyOtp,deleteAccount
 } from "./autController.js";
 
 import authMiddleware from "./authMiddleware.js";
@@ -17,7 +17,7 @@ router.post("/verify-otp", verifyOtp);
 
 router.post("/login", login);
 router.post("/google-login", googleLogin);
-
+router.delete("/deleteUser",authMiddleware,deleteAccount)
 router.get(
   "/profile",
   authMiddleware,

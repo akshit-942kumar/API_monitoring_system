@@ -45,7 +45,38 @@ export const googleLogin = async (req, res) => {
   }
 };
 
+export const deleteAccount = async (req, res) => {
+  try {
+    console.log("delete acc started")
+await axios.delete(
+  `${process.env.MONITOR_SERVICE}/api/monitors/user`,
+  {
+    headers: {
+      Authorization: req.headers.authorization,
+    },
+  }
+);
+// console.log("user id is:",req.user.id)
 
+
+    const user = await User.findByIdAndDelete(req.user.id)
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Account deleted successfully",
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
 
 export const register = async (req, res) => {
   try {

@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import authRoutes from "./authroutes.js";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import authMiddleware from "./authMiddleware.js";
 dotenv.config()
 const app = express();
 app.use(helmet());

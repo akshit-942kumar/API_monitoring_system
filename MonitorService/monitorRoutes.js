@@ -2,7 +2,7 @@ import express from "express";
 
 import {
   addMonitor,
-  getMonitors,deleteMonitor,getLogs,updateLastEmailSent
+  getMonitors,deleteMonitor,getLogs,updateLastEmailSent,deleteAllMonitors
 } from "./monitorController.js";
 
 import authMiddleware from "./authMiddleware.js";
@@ -30,5 +30,10 @@ router.delete(
   "/deleteMonitor/:id",
   authMiddleware,
   deleteMonitor
+);
+router.delete(
+  "/user",
+  authMiddleware,
+  deleteAllMonitors
 );
 export default router;
