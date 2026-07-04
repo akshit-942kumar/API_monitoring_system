@@ -16,7 +16,7 @@ const limiter = rateLimit({
     message: "Too many requests. Please try again later.",
   },
 });
-
+app.set("trust proxy", 1)
 app.use(limiter);
 app.use(cors({
   origin:[

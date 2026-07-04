@@ -13,10 +13,10 @@ app.use(cors({
     `${process.env.FRONTEND_URL}`,
   ]
 }));
-
+app.set("trust proxy", 1)
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10,
+  max: 20,
 });
 app.use("/api/auth",authLimiter)
 
