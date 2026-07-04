@@ -1,13 +1,29 @@
 import express from "express";
 import cors from "cors";
 import { createProxyMiddleware } from "http-proxy-middleware";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
+app.use(helmet());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 300,
+  message: {
+    message: "Too many requests. Please try again later.",
+  },
+});
 
-app.use(cors());
+app.use(limiter);
+app.use(cors({
+  origin:[
+    "http://localhost:3000",
+    `${process.env.FRONTEND_URL}`,
+  ]
+}));
 
 app.use(
   "/api/auth",
